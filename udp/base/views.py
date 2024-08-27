@@ -9,4 +9,10 @@ def home(request):
 
 def authView(request):
     if request.method == "POST":
-        form = UserCreationForm(request)
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect("base:login")
+        else:
+            form = UserCreationForm()
+        return render(request, "registration/signup.html", {"form": form})
