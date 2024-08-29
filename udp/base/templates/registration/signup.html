@@ -1,8 +1,10 @@
 {% extends "base.hmtl" %}
 
+{% block content %}
 <form method="POST">
     {% csrf_token %}
     {{form}}
     <button type="submit">Submit</button>
 </form>
-{%  endblock %}
+
+{%  endblock content%}
